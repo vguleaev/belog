@@ -1,0 +1,41 @@
+{
+  "name": "belog",
+  "version": "0.0.8",
+  "description": "Drop-in replacement for console.log debugging",
+  "type": "module",
+  "module": "dist/browser.js",
+  "main": "dist/index.cjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "browser": {
+    "./dist/index.js": "./dist/browser.js"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production rollup -c -m",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "Vladislav Guleaev",
+  "license": "MIT",
+  "keywords": [
+    "logger",
+    "log",
+    "console"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vguleaev/belog.git"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "28.0.1",
+    "@rollup/plugin-node-resolve": "15.3.0",
+    "cross-env": "7.0.3",
+    "rollup": "4.25.0"
+  }
+}
