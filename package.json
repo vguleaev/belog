@@ -1,6 +1,6 @@
 {
   "name": "belog",
-  "version": "0.0.8",
+  "version": "1.0.0",
   "description": "Drop-in replacement for console.log debugging",
   "type": "module",
   "module": "dist/browser.js",
@@ -19,7 +19,8 @@
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "author": "Vladislav Guleaev",
   "license": "MIT",
