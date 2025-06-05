@@ -52,16 +52,17 @@ class Belog {
 
   /**
    * Log the message to a file. If the file does not exist, it will be created.
-   * If the file exists, the message will be appended to it. 
-   * 
+   * If the file exists, the message will be appended to it.
+   *
    * In the browser, this method will log an error.
    * @param {string} filename - The name of the file. Default is "belog.log".
+   * @param {boolean} overwrite - If true, the file will be overwritten. Default is false.
    * @returns {Belog} The Belog instance.
    * @example
    * belog('hello').toFile('log.txt');
    */
-  toFile(filename = 'belog.log') {
-    if(!this.#condition) {
+  toFile(filename = 'belog.log', overwrite = false) {
+    if (!this.#condition) {
       return this;
     }
     if (this.#isClient) {
@@ -69,16 +70,19 @@ class Belog {
       return this;
     }
 
-    this.#logToFileAsync(filename);
+    this.#logToFileAsync(filename, overwrite);
     return this;
   }
 
-  async #logToFileAsync(filename) {
+  async #logToFileAsync(filename, overwrite) {
     const fs = require('fs').promises;
-    const stringifiedArgs = this.#args.map(arg => 
-      typeof arg === 'object' ? JSON.stringify(arg) : arg
-    );
-    await fs.appendFile(filename, `${stringifiedArgs.join(' ')}\n`);
+    const stringifiedArgs = this.#args.map((arg) => (typeof arg === 'object' ? JSON.stringify(arg) : arg));
+
+    if (overwrite) {
+      await fs.writeFile(filename, `${stringifiedArgs.join(' ')}\n`);
+    } else {
+      await fs.appendFile(filename, `${stringifiedArgs.join(' ')}\n`);
+    }
   }
 
   /**
@@ -94,8 +98,8 @@ class Belog {
   }
 
   /**
-   * Log the message to the console. 
-   * 
+   * Log the message to the console.
+   *
    * _Called automatically, no need to call it explicitly._
    * @returns {Belog} The Belog instance.
    */
@@ -164,19 +168,19 @@ class Belog {
  * @example
  * // Basic usage
  * belog('hello world!');
- * 
+ *
  * // Conditional logging
  * belog('hello world!').when(true);
- * 
+ *
  * // Logging to a file
  * belog('hello world!').toFile('log.txt');
- * 
+ *
  * // Logging with color
  * belog('hello world!').inColor('red');
- * 
+ *
  * // Logging with custom prefix
  * belog('hello world!').withPrefix('react');
- * 
+ *
  * // You can chain the methods
  * belog('hello world!').when(true).toFile('log.txt');
  */

@@ -19,6 +19,7 @@ This zero-dependency, universal package works seamlessly in both the browser and
 ## Install
 
 Install Belog via npm:
+
 ```
 npm i belog
 ```
@@ -36,11 +37,12 @@ belog('hello world!');
 This outputs log with prefix _"belog"_ for easier searching in you terminal and a timestamp.
 
 Log output example:
+
 ```
 > belog [09:31:32.617]: hello world!
 ```
 
-`belog()` can be treated as a shorter alias for `console.log()` with additional enhancements. 
+`belog()` can be treated as a shorter alias for `console.log()` with additional enhancements.
 
 Since **belog** is just a wrapper around `console.log()`, it supports all the arguments that `console.log()` does. This means you can use it in the same way you would use `console.log()`, but with the **added benefits** and **cleaner api of method chaining**.
 
@@ -72,7 +74,7 @@ belog('hello').when(isAdult);
 
 ## toFile(filename?: string)
 
-Log the message to a file. If the file does not exist, it will be created. If the file exists, the message will be appended to it. 
+Log the message to a file. If the file does not exist, it will be created. If the file exists, the message will be appended to it.
 
 `filename` param is optional, default is "belog.log". File will be created in project root directory.
 
@@ -82,11 +84,17 @@ Log the message to a file. If the file does not exist, it will be created. If th
 belog('hello').toFile('log.txt');
 ```
 
+To overwrite the file instead of appending, you can set the second parameter to `true`:
+
+```javascript
+belog('hello').toFile('log.txt', true);
+```
+
 ## inColor(color: string)
 
-Set the color for the console log. 
+Set the color for the console log.
 
-Possible colors are: 
+Possible colors are:
 
 ```
 "grey" | "black" | "red" | "green" | "yellow" | "blue" | "magenta" | "cyan" | "white"
