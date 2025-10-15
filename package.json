@@ -1,14 +1,16 @@
 {
   "name": "belog",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Drop-in replacement for console.log debugging",
   "type": "module",
   "module": "dist/browser.js",
   "main": "dist/index.cjs",
+  "types": "index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "types": "./index.d.ts"
     }
   },
   "browser": {
@@ -20,6 +22,8 @@
   },
   "files": [
     "dist",
+    "src",
+    "index.d.ts",
     "README.md"
   ],
   "author": "Vladislav Guleaev",
@@ -37,6 +41,7 @@
     "@rollup/plugin-commonjs": "28.0.1",
     "@rollup/plugin-node-resolve": "15.3.0",
     "cross-env": "7.0.3",
-    "rollup": "4.25.0"
+    "rollup": "4.25.0",
+    "typescript": "^5.9.3"
   }
 }
