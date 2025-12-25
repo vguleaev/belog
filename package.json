@@ -1,6 +1,6 @@
 {
   "name": "belog",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Drop-in replacement for console.log debugging",
   "type": "module",
   "module": "dist/browser.js",
@@ -18,7 +18,9 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c -m",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "test:cjs": "node tests/require-test.cjs",
+    "test:esm": "node tests/esm-test.js"
   },
   "files": [
     "dist",

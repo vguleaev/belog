@@ -75,7 +75,7 @@ class Belog {
   }
 
   async #logToFileAsync(filename, overwrite) {
-    const fs = require('fs').promises;
+    const fs = (await import('fs')).promises;
     const stringifiedArgs = this.#args.map((arg) => (typeof arg === 'object' ? JSON.stringify(arg) : arg));
 
     if (overwrite) {
