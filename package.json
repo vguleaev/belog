@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production rollup -c -m",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "npm run test:cjs && npm run test:esm",
     "test:cjs": "node tests/require-test.cjs",
     "test:esm": "node tests/esm-test.js"
   },
